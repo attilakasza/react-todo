@@ -1,13 +1,361 @@
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans:100,300,400,600,700&display=swap');
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  background-color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.todo {
+  background-color: #fff;
+  width: 100vw;
+  height: 100vh;
+  position:absolute;
+  top: 0; 
+}
+
+.todo__list,
+.todo__add {
+  margin: 10%;
+}
+
+.todo__add {
+  position: relative;
+  margin-top: 17%;
+  margin-bottom: 14%;
+}
+.todo__input {
+  position: absolute;
+  width: 9rem;
+  height: 2.5rem;
+  padding: .7rem;
+  padding-left: 2.1rem;
+  padding-top: .8rem;
+  background-color: #353639;
+  color: #353639;
+  border: solid #353639;
+  border-radius: 25px;
+  box-shadow: 0px 4px 5px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.todo__form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo__label {
+  font-size: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo__input:focus, 
+.todo__submit:focus {
+  outline: none;
+}
+
+.todo__input::placeholder {
+  text-align: center;
+  color: #d3d8df;
+  line-height: .87rem;
+  font-size: .87rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+  opacity: 1;
+}
+
+.todo__submit {
+  position: absolute;
+  left: calc(100% - 3.5rem);
+  font-size: 2.1rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  width: 3.5rem;
+  height: 2.5rem;
+  background-color: transparent;
+  color: #353639;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.todo__plus {
+  position: absolute;
+  left: calc(50% - 3.2rem);
+  color: #d3d8df;
+  font-size: 2.1rem;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 300;
+  height: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.todo__submit:hover {
+  background-color: #353639;
+  color: #fff;
+}
+
+.todo__list {
+  height: 75vh;
+}
+
+.todo__no {
+  height: 100%;
+  position: relative;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.todo__no h1 {
+  position: absolute;
+  font-size: calc(.5rem + 2vw);
+  color: #353639;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 600;
+}
+
+.todo__no p {
+  font-size: calc(.5rem + .9vw);
+  color: #757780;
+  font-family: 'Josefin Sans', sans-serif;
+  font-weight: 400;
+}
+
+.todo__empty {
+  padding-top: calc(.5rem + .5vw);
+  line-height: 0rem;
+}
+
+.todo__icons {
+  opacity: .3;
+  height: 100%;
+  width: 100%;
+}
+
+.todo__item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 3%;
+}
+
+.todo__content {
+  position: relative;
+  display: inline-block;
+  align-self: center;
+  
+}
+
+.todo__name {
+  font-family: Josefin Sans;
+  font-weight: 400;
+  color: #353639;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.todo__strikethrough {
+  width: 0;
+  stroke: #353639;
+  stroke-width: 3;
+  position: absolute;
+  top: 50%;
+  opacity: 0;
+}
+
+.todo__delete {
+  padding: .32rem;
+  padding-top: .47rem;
+  border: 1px solid #9B9CA0;
+  border-radius: 25px;
+  color: #9B9CA0;
+  font-size: .6rem;
+  font-family: Josefin Sans;
+  font-weight: 700;
+  opacity: 0;
+  cursor: pointer;
+  position: relative;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.todo__delete:before  {
+  position: absolute;
+  bottom: 50%;
+  width: 100%;
+}
+
+.todo__delete:hover {
+  background-color: #9B9CA0;
+  color: #fff;
+}
+
+@media screen and (min-width: 48em) { 
+  .todo__list {
+    height: 67vh;
+  }
+
+  .todo__no h1{
+    font-size: 1.5rem;
+  }
+  
+  .todo__no p{
+    font-size: 1.1rem;
+  }
+
+  .todo__empty {
+    padding-top: .8rem;
+    line-height: 0rem;
+  }
+}
+
+@media screen and (min-width: 62em) { 
+  .todo {
+    width: 34rem;
+    height: 50rem;
+    box-shadow: 0px 4px 25px rgba(0, 0, 0, 0.2);
+    left: 25%;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+ 
+  #root:after {
+    content: ' ';
+    border-bottom: 100vh solid #353639;
+    width: 50vw;
+    position: absolute;
+    left: 50vw;
+    top: 0;
+    z-index: -5;
+  }
+  
+  .todo__list {
+    height: 35rem;
+  }
+
+  .todo__no h1{
+    font-size: 1.2rem;
+  }
+  
+  .todo__no p{
+    font-size: .85rem;
+  }
+
+  .title {
+    height: 100vh;
+    width: 50vw;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .title__fill {
+    display: flex;
+    font-size: 13rem;
+    letter-spacing: 0.065em;
+    font-family: Josefin Sans;
+    font-weight: 700;
+    color: #353639;
+    transform: rotate(-90deg);
+    text-transform: uppercase;
+  }
+
+  .title_border {
+    color: #fff;
+    text-shadow: #2C2C2C 1px 0, #2C2C2C 1px 1px, #2C2C2C 0 1px, #2C2C2C -1px 1px, #2C2C2C -1px 0, #2C2C2C -1px -1px, #2C2C2C 0 -1px, #2C2C2C 1px -1px;  
+  }
+
+  footer {
+    padding: .5rem 1rem;
+    position:absolute;
+    bottom:0;
+    right:0;
+    transform: rotate(-90deg) translate(100%, 0);
+    transform-origin: right bottom;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    color: #353639;
+    text-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+  }
+
+  footer a {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 700;
+    color: #353639;
+    text-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+@media screen and (min-width: 81em) { 
+  .todo {
+    left: 20%;
+  }
+}
+
+@media screen and (min-width: 88em) { 
+  .todo {
+    left: 15%;
+  }
+}
+
+@media screen and (min-width: 120em) { 
+  .todo {
+    left: 10%;
+  }
+}
+
+@media screen and (min-width: 155em) { 
+  .todo {
+    width: 39rem;
+    height: 60rem;
+    left: 5%;
+  }
+
+  .todo__add {
+    margin-top: 19%;
+    margin-bottom: 14%;
+  }
+
+  .todo__list {
+    height: 41rem;
+  }
+
+  .title__fill {
+    font-size: 15.5rem;
+  }
+
+  .todo__no h1{
+    font-size: 1.4rem;
+  }
+  
+  .todo__no p{
+    font-size: .95rem;
+  }
+  
+  .todo__empty {
+    padding-top: .95rem;
+    line-height: 0rem;
+  }
 }
